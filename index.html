@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Planr Docs</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link href="https://fonts.googleapis.com/css?family=Satisfy" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+
+      <!-- Header -->
+      <div class="navbar-header">
+
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#topNavBar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href=""><span class="glyphicon glyphicon-education" aria-hidden="true"></span>&nbsp;&nbsp;Planr</a>
+      </div>
+
+      <!-- Items -->
+      <div class="collapse navbar-collapse" id="topNavBar">
+
+        <!-- Right-hand Block -->
+        <ul class="nav navbar-nav navbar-right">
+        </ul>
+
+      </div>
+
+    </div>
+  </nav>
+
+<p>This app will serve a number of purposes:</p>
+<ul>
+<li>Academic: repeat old offerings and create new ones</li>
+<li>Finance: input fee information, compare courses, reference funding information</li>
+<li>Marketing: retrieve core information about course, along with marketing-specific text and details</li>
+<li>CIS: export single combined document containing all data, optimised for import into ProSolution with minimal effort</li>
+<li>Registers: allow timetables and sessions to be scheduled in advance as far as possible</li>
+<li>Premises: highlight courses that will run on Saturdays (i.e. when the college will need to be opened outside of usual hours)</li>
+<li>Forecasting: project income based on min/max student numbers, LARS funding, planned fees, and (where repeat) actual number of enrolments in previous academic year</li>
+</ul>
+
+<h2>User Guide</h2>
+
+<p>The website will require users to register for an account before they can begin working on their plan, and different user groups will have different access rights and interfaces.</p>
+
+<p>Only staff with @bathcollege.ac.uk email address will be able to register.</p>
+
+<img src="login1.png">
+
+<div class="navbar navbar-inverse navbar-fixed-bottom">
+  <div class="container-fluid" style="color: #FFF; padding-top: 14px">
+  <div class="col-md-2">&copy; Bath College | 2017</div>
+  <div class="col-md-2 col-md-offset-8"><a href="https://github.com/lb13/django-docs/blob/master/README.md" style="color: #FFF"><img style="height: 24px; filter: invert(100%)" src="{% static 'polls/images/github.svg' %}">&nbsp;&nbsp;read the docs here</a></div>
+  </div>
+</div>
+
+</body>
+</html>
