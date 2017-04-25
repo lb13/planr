@@ -1,5 +1,7 @@
 # Planr Documentation
 
+<a href="introduction.md">Read the non-technical guide here</a>
+
 ## Contents
 <a href="#versions">Versions</a> | <a href="#hosting">Hosting</a> | <a href="#app-structure">App Structure</a> | <a href="#user-interface">User Interface</a> | <a href="#filtering-and-presentation-of-data">Filtering Data</a> | <a href="#data-validation">Data Validation</a> | <a href="#custom-user-model">Custom User Model</a> | <a href="#offering-model">Offering Model</a> | <a href="#lars-model">LARS Model</a> | <a href="#parent--child-codes">Parent / Child Codes</a> | <a href="#user-groups">User Groups</a> | <a href="#user-resources">User Resources</a> | <a href="#css-and-js">CSS and Javascript</a>
 
