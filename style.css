@@ -1,0 +1,12 @@
+body {
+  background: url("bg.png");
+  font-family: 'Century Gothic', Verdana, Arial, sans-serif;
+}
+
+li a {
+    color: green;
+}
+
+.navbar-brand{
+  font-family: 'Satisfy', cursive;
+}
