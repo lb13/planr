@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>{% block title %}Planr{% endblock %}</title>
+  <!-- Loads the path to your static files -->
+  {% load staticfiles %}
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="{% static 'curriculum/style.css' %}">
+  <link href="https://fonts.googleapis.com/css?family=Satisfy" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+
+      <!-- Header -->
+      <div class="navbar-header">
+
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#topNavBar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="{% url 'curriculum:index'%}"><span class="glyphicon glyphicon-education" aria-hidden="true"></span>&nbsp;&nbsp;Planr</a>
+      </div>
+
+      <!-- Items -->
+      <div class="collapse navbar-collapse" id="topNavBar">
+
+        {% if user.is_authenticated %}
+        <!-- Search Function -->
+        <form class="navbar-form navbar-left" role="search" method="get" action="#">
+          <div class="form-group">
+            <input type="text" class="form-control" name="q" value="">
+            <button type="submit" class="btn btn-default">Search</button>
+          </div>
+        </form>
+        {% else %}
+        {% endif %}
+
+        <!-- Right-hand Block -->
+        <ul class="nav navbar-nav navbar-right">
+        {% if user.is_authenticated %}
+        <!-- Add Offering Function -->
+          <li class="">
+            <a href="{% url 'curriculum:offering-add' %}">
+              <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp; Add New Offering
+            </a>
+          </li>
+          {% else %}
+          {% endif %}
+
+          {% if user.is_authenticated %}
+          {% else %}
+          <!-- Log In Function -->
+          <li class="">
+            <a href="/login/">
+              <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>&nbsp;
+              Log In
+            </a>
+          </li>
+          {% endif %}
+
+          {% if user.is_authenticated %}
+          <!-- Log Out Function -->
+          <li class="">
+            <a href="/logout/">
+              <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>&nbsp;
+              Log Out
+            </a>
+          </li>
+          {% else %}
+          {% endif %}
+
+        </ul>
+
+      </div>
+
+    </div>
+  </nav>
+{% block body %}
+{% endblock %}
+<div class="navbar navbar-inverse navbar-fixed-bottom">
+  <div class="container-fluid" style="color: #FFF; padding-top: 14px">
+  <div class="col-md-2">&copy; Bath College | 2017</div>
+  <div class="col-md-2 col-md-offset-8"><a href="https://github.com/lb13/planr" style="color: #FFF"><img style="height: 24px; filter: invert(100%)" src="{% static 'curriculum/images/github.svg' %}">&nbsp;&nbsp;read the docs here</a></div>
+  </div>
+</div>
+
+<script>
+$('td:contains("True")').closest('tr').css('background-color','orange');
+</script>
+
+</body>
+</html>

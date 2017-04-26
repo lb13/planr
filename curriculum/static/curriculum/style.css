@@ -1,0 +1,32 @@
+body{
+  background: url("images/bg.png");
+  font-family: 'Century Gothic', Verdana, Arial, sans-serif;
+  padding-top: 65px;
+  padding-bottom: 65px;
+}
+
+.navbar{
+  border-radius: 0;
+}
+
+a {
+    color: green;
+}
+
+.navbar-brand{
+  font-family: 'Satisfy', cursive;
+}
+
+td {
+  padding-left: 5px;
+  padding-right: 5px;
+  border-right: 1px solid black;
+}
+
+th {
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  border-right: 1px solid white;
+}

@@ -1,0 +1,98 @@
+{% extends 'curriculum/base.html' %}
+
+{% block body %}
+
+{% if object_list %}
+<div class="container-fluid">
+  <h3>Hi (NAME)! Here are the courses in your department (DEPT)</h3>
+  <table style="border: 1px solid black; border-collapse: collapse; table-layout: fixed; width: 3000px">
+    <tr style="border: 1px solid black; background-color: black; color: white">
+      <th style="width: 75px">Under Review?</th>
+      <th style="width: 300px">Course Name</th>
+      <th style="width: 180px">Course Code</th>
+      <th style="width: 100px">View Marketing</th>
+      <th style="width: 100px">Edit</th>
+      <th style="width: 100px">Delete</th>
+      <th style="width: 75px">Course Delivery</th>
+      <th style="width: 75px">Course Type</th>
+      <th style="width: 180px">Associated Code</th>
+      <th style="width: 60px">Strand</th>
+      <th style="width: 75px">Location</th>
+      <th style="width: 80px">Qual Aim</th>
+      <th>Fee Comments</th>
+      <th style="width: 120px">Start Date</th>
+      <th style="width: 120px">End Date</th>
+      <th style="width: 100px">Start Time</th>
+      <th style="width: 100px">End Time</th>
+      <th>Day</th>
+      <th style="width: 50px">Study Year</th>
+      <th style="width: 75px">Study Duration</th>
+      <th style="width: 65px">Weekly Hours</th>
+      <th style="width: 65px">No. of Weeks</th>
+      <th style="width: 65px">GLH</th>
+      <th style="width: 65px">Groups</th>
+      <th style="width: 70px">Min Students</th>
+      <th style="width: 70px">Max Students</th>
+
+    </tr>
+    {% for offering in object_list %}
+    <tr style="border: 1px solid black">
+      <td>{{ offering.course_caution }}</td>
+      <td>{{ offering.course_name }}</td>
+      <td>{{ offering.course_code }}</td>
+      <td>
+        <form action="{% url 'curriculum:offering-update' offering.course_id %}" method="get" style="display: inline">
+          {% csrf_token %}
+          <input type="hidden" name="offering_id" value="{{ offering.course_id }}"/>
+          <button type="submit" class="btn btn-success btn-sm" style="width: 90px">
+            <span class="glyphicon glyphicon-th-list"></span>
+          </button>
+        </form>
+      </td>
+      <td style="border-right: 1px solid black">
+        <form action="{% url 'curriculum:offering-update' offering.course_id %}" method="get" style="display: inline">
+          {% csrf_token %}
+          <input type="hidden" name="offering_id" value="{{ offering.course_id }}"/>
+          <button type="submit" class="btn btn-primary btn-sm" style="width: 90px">
+            <span class="glyphicon glyphicon-pencil"></span>
+          </button>
+        </form>
+      </td>
+      <td>
+        <form action="{% url 'curriculum:offering-delete' offering.course_id %}" method="get" style="display: inline">
+          {% csrf_token %}
+          <input type="hidden" name="offering_id" value="{{ offering.course_id }}"/>
+          <button type="submit" class="btn btn-danger btn-sm" style="width: 90px">
+            <span class="glyphicon glyphicon-trash"></span>
+          </button>
+        </form>
+      </td>
+      <td>{{ offering.course_delivery }}</td>
+      <td>{{ offering.course_type }}</td>
+      <td>{{ offering.parent_code }}</td>
+      <td>{{ offering.strand }}</td>
+      <td>{{ offering.location }}</td>
+      <td>{{ offering.qual_aim }}</td>
+      <td>{{ offering.fee_comments }}</td>
+      <td>{{ offering.start_date }}</td>
+      <td>{{ offering.end_date }}</td>
+      <td>{{ offering.start_time }}</td>
+      <td>{{ offering.end_time }}</td>
+      <td>{{ offering.day }}</td>
+      <td>{{ offering.study_year }}</td>
+      <td>{{ offering.study_year_duration }}</td>
+      <td>{{ offering.wk_hrs }}</td>
+      <td>{{ offering.number_wks }}</td>
+      <td>{{ offering.glh }}</td>
+      <td>{{ offering.number_grps }}</td>
+      <td>{{ offering.min_students }}</td>
+      <td>{{ offering.max_students }}</td>
+
+    </tr>
+    {% endfor %}
+  </table>
+{% else %}
+  <h3>There are no courses in your curriculum yet!</h3>
+{% endif %}
+</div>
+{% endblock %}
