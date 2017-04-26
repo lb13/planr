@@ -10,7 +10,7 @@
       <th style="width: 75px">Under Review?</th>
       <th style="width: 300px">Course Name</th>
       <th style="width: 180px">Course Code</th>
-      <th style="width: 100px">View Marketing</th>
+      <th style="width: 100px">Marketing</th>
       <th style="width: 100px">Edit</th>
       <th style="width: 100px">Delete</th>
       <th style="width: 75px">Course Delivery</th>
@@ -41,7 +41,7 @@
       <td>{{ offering.course_name }}</td>
       <td>{{ offering.course_code }}</td>
       <td>
-        <form action="{% url 'curriculum:offering-update' offering.course_id %}" method="get" style="display: inline">
+        <form action="{% url 'curriculum:marketing-update' offering.course_id %}" method="get" style="display: inline">
           {% csrf_token %}
           <input type="hidden" name="offering_id" value="{{ offering.course_id }}"/>
           <button type="submit" class="btn btn-success btn-sm" style="width: 90px">
