@@ -3,6 +3,8 @@ body{
   font-family: 'Century Gothic', Verdana, Arial, sans-serif;
   padding-top: 65px;
   padding-bottom: 65px;
+  padding-right: 15px;
+  width: 3070px;
 }
 
 .navbar{
@@ -29,4 +31,5 @@ th {
   padding-top: 1px;
   padding-bottom: 1px;
   border-right: 1px solid white;
+  background: linear-gradient(grey, black, grey);
 }
