@@ -1,0 +1,9 @@
+{% if lars.count > 0 %}
+
+{% for lars in larss %}
+  <span style="color: red">{{ lars.qual_aim_title }}</span><br>
+{% endfor %}
+
+{% else %}
+<p>Nothing to show!</p>
+{% endif %}

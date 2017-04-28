@@ -1,5 +1,20 @@
 $('td:contains("True")').closest('tr').css('background-color','orange');
 
+function calcGlh(){
+    hrs = document.getElementById("id_wk_hrs").value;
+    wks = document.getElementById("id_number_wks").value;
+    document.getElementById("rec_glh").innerHTML = hrs * wks;
+}
+
+function showAss(){
+  if ( document.getElementById("id_course_type").value == 'N' | document.getElementById("id_course_type").value == 'C') {
+    document.getElementById("ass_aim").style.display = "block";
+  }
+  else {
+    document.getElementById("ass_aim").style.display = "none";
+  }
+}
+
 $("*").filter(function() { return !$(this).children().length; })
       .html(function(index, old) { return old.replace('True', '<span style="color: red" class="glyphicon glyphicon-exclamation-sign">'); });
 
