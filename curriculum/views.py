@@ -4,6 +4,7 @@ from django.views.generic import CreateView, UpdateView, DeleteView
 from django.core.urlresolvers import reverse_lazy
 from django.http import JsonResponse
 from django.db.models import Q
+from django.shortcuts import render_to_response
 
 class IndexView(generic.ListView):
     template_name = 'curriculum/index.html'
@@ -31,3 +32,13 @@ class MarketingUpdate(UpdateView):
 class OfferingDelete(DeleteView):
     model = Offering
     success_url = reverse_lazy('curriculum:index')
+
+def search_lars(request):
+    if request.method == "POST":
+        search_text = request.POST['search_text']
+    else:
+        search_text = ''
+
+    lars = Lars.objects.filter(qual_aim__icontains=search_text)
+
+    return render_to_response('curriculum/ajax_search.html', {'lars': lars})

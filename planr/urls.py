@@ -6,4 +6,5 @@ urlpatterns = [
     url(r'^$', views.IndexView.as_view(), name='index'),
     url(r'^admin/', admin.site.urls),
     url(r'^curriculum/', include('curriculum.urls')),
+    url(r'^search/$', views.search_lars, name='search'),
 ]

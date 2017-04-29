@@ -10,7 +10,7 @@ class Lars(models.Model):
     class Meta:
         verbose_name_plural = "LARS Entries"
     def __str__(self):
-        return self.qual_aim
+        return self.qual_aim + ' ' + self.qual_aim_title
 
 class OldOffering(models.Model):
     course_id = models.AutoField(primary_key=True)

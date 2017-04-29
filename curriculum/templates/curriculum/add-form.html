@@ -1,5 +1,5 @@
 {% extends 'curriculum/base.html' %}
-{% block title %}{% endblock %}
+{% block title %}Add Offering{% endblock %}
 
 {% block body %}
 <div class="container-fluid">
@@ -63,8 +63,34 @@
 <div class="form-group">
   <label class="col-sm-2">{{ form.qual_aim.label_tag }}</label>
   <div class="col-sm-10">{{ form.qual_aim }}<br>
-    <a href="/lookup/"><button>Qual Aim Lookup</button></a>
     <span style="color: #459540">{{ form.qual_aim.help_text }}</span>
+  </div>
+</div>
+
+<h3>Search</h3>
+{% csrf_token %}
+<input type="text" id="search" name="search"/>
+<p id="search-results"></p>
+
+<div class="form-group">
+  <label class="col-sm-2">{{ form.fee_comments.label_tag }}</label>
+  <div class="col-sm-10">{{ form.fee_comments }}<br>
+    <span style="color: #459540">Record any useful cost information so that finance can calculate fees accurately.</span>
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-sm-2">{{ form.start_date.label_tag }}</label>
+  <div class="col-sm-10">{{ form.start_date }}<br>
+    <input type="text" id="datepicker"/>
+    <span style="color: #459540">{{ form.start_date.help_text }}</span>
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-sm-2">{{ form.end_date.label_tag }}</label>
+  <div class="col-sm-10">{{ form.end_date }}<br>
+    <span style="color: #459540">{{ form.end_date.help_text }}</span>
   </div>
 </div>
 
