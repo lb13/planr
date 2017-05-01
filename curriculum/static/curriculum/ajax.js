@@ -1,12 +1,12 @@
 $(function(){
 
-  $('#search').keyup(function() {
+  $('#id_qual_aim').keyup(function() {
 
     $.ajax({
       type: "POST",
       url: "/search/",
       data: {
-        'search_text' : $('#search').val(),
+        'search_text' : $('#id_qual_aim').val(),
         'csrfmiddlewaretoken' : $("input[name=csrfmiddlewaretoken]").val()
       },
       success: searchSuccess,
@@ -19,5 +19,5 @@ $(function(){
 
 function searchSuccess(data, textStatus, jqXHR)
 {
-  $('#search-results').innerHTML(data);
+  $('#search-results').html(data);
 }

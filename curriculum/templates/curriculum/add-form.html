@@ -61,16 +61,12 @@
 </div>
 
 <div class="form-group">
+  {% csrf_token %}
   <label class="col-sm-2">{{ form.qual_aim.label_tag }}</label>
-  <div class="col-sm-10">{{ form.qual_aim }}<br>
+  <div class="col-sm-10">{{ form.qual_aim }}<div style="display: inline; margin: 0px; padding: 0px" id="search-results"></div><br>
     <span style="color: #459540">{{ form.qual_aim.help_text }}</span>
   </div>
 </div>
-
-<h3>Search</h3>
-{% csrf_token %}
-<input type="text" id="search" name="search"/>
-<p id="search-results"></p>
 
 <div class="form-group">
   <label class="col-sm-2">{{ form.fee_comments.label_tag }}</label>

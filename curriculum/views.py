@@ -39,6 +39,9 @@ def search_lars(request):
     else:
         search_text = ''
 
-    lars = Lars.objects.filter(qual_aim__icontains=search_text)
+    if search_text == '':
+        result = ''
+    else:
+        result = Lars.objects.filter(qual_aim__icontains=search_text)
 
-    return render_to_response('curriculum/ajax_search.html', {'lars': lars})
+    return render_to_response('curriculum/ajax_search.html', {'lars': result})
