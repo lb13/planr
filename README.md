@@ -10,6 +10,8 @@
 ### Versions
 I am currently using Python 3.6.1 and Django 1.11 for my development trials, although I have not properly begun writing the final application code yet. Core Django documentation is available <a href="https://docs.djangoproject.com/en/1.11/">here</a>.
 
+Additional requirements are Bootstrap 3.3.7, jQuery 3.2.1, and XlsxWriter 0.7.3.
+
 ### Hosting
 If possible, I will aim to host the webapp on the college's servers, which I think run nginx, and should therefore be compatible. However, if this is not feasible, or there is too much set up required (I'm not really savvy on server management / sysadmin), then I may use a separate host. The current leader is www.hostpresto.com, who are based in the UK, offer a low priced option (£3.50 per month), and have support for Django installations. Another possibility is www.pythonanywhere.com, who offer a very streamlined Django set-up, but are slightly more expensive.
 
