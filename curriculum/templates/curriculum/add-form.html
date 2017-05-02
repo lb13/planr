@@ -63,9 +63,9 @@
 <div class="form-group">
   {% csrf_token %}
   <label class="col-sm-2">{{ form.qual_aim.label_tag }}</label>
-  <div class="col-sm-10">{{ form.qual_aim }}<div style="display: inline; margin: 0px; padding: 0px" id="search-results"></div><br>
-    <span style="color: #459540">{{ form.qual_aim.help_text }}</span>
-  </div>
+  <div class="col-sm-3">{{ form.qual_aim }}</div>
+    <div class="col-sm-3 alert alert-info" style="display: inline;" id="search-results"></div>
+
 </div>
 
 <div class="form-group">
@@ -78,7 +78,6 @@
 <div class="form-group">
   <label class="col-sm-2">{{ form.start_date.label_tag }}</label>
   <div class="col-sm-10">{{ form.start_date }}<br>
-    <input type="text" id="datepicker"/>
     <span style="color: #459540">{{ form.start_date.help_text }}</span>
   </div>
 </div>
@@ -107,8 +106,29 @@
 <div class="form-group">
   <label class="col-sm-2">GLH:</label>
   <div class="col-sm-10">{{ form.glh }}
-    <div>Recommended value: <div id="rec_glh" style="display: inline"></div></div>
+    <div>Calculated value: <div id="rec_glh" style="display: inline"></div></div>
     <span style="color: #459540">{{ form.glh.help_text }}</span>
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-sm-2">Start Time:</label>
+  <div class="col-sm-10">{{ form.start_time }}<br>
+    <span style="color: #459540">{{ form.start_time.help_text }}</span>
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-sm-2">End Time:</label>
+  <div class="col-sm-10">{{ form.end_time }}<br>
+    <span style="color: #459540">{{ form.end_time.help_text }}</span>
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-sm-2">Day:</label>
+  <div class="col-sm-10">{{ form.day }}<br>
+    <span style="color: #459540">{{ form.day.help_text }}</span>
   </div>
 </div>
 

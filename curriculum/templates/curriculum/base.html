@@ -103,6 +103,13 @@ $(document).ready(function()
         $("#myTable").tablesorter( {sortList: [[0,0], [1,0]]} );
     }
 );
+
+$("#myTable tr").click(function() {
+    var selected = $(this).hasClass("highlight");
+    $("#myTable tr").removeClass("highlight");
+    if(!selected)
+            $(this).addClass("highlight");
+});
 </script>
 </body>
 </html>

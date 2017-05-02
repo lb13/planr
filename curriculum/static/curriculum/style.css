@@ -34,3 +34,5 @@ th {
   border-right: 1px solid white;
   background: linear-gradient(grey, black, grey);
 }
+
+.highlight { background-color: #c2e4e7; }

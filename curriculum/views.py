@@ -23,6 +23,7 @@ class OfferingCreate(CreateView):
 
 class OfferingUpdate(UpdateView):
     model = Offering
+    template_name = 'curriculum/edit-form.html'
     fields = ['course_caution','course_name','course_delivery','course_type','parent_code','strand','department','location','qual_aim','fee_comments','start_date','end_date','start_time','end_time','day','study_year','study_year_duration','wk_hrs','number_wks','glh','number_grps','min_students','max_students','mkt_course_name','mkt_course_overview','mkt_prospectus','mkt_entry_req','mkt_topics','mkt_target','mkt_learning','mkt_assess','mkt_career','mkt_funding','mkt_add_costs','mkt_where','mkt_bring','mkt_other','mkt_tutor',]
 
 class MarketingUpdate(UpdateView):

@@ -1,9 +1,11 @@
 {% if lars.count > 0 %}
 
 {% for lars in lars %}
-  <span>{{ lars.qual_aim_title }}</span><br>
+  <span><strong>Qual Title:</strong> {{ lars.qual_aim_title }}<br>
+    <strong>Awarding Body:</strong> EDEXCEL<br>
+    <strong>GLH Min/Max:</strong> 350/540</span>
 {% endfor %}
 
 {% else %}
-<p>Nothing to show!</p>
+<span>Nothing to show!</span>
 {% endif %}
