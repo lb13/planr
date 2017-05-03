@@ -149,8 +149,8 @@ class Offering(models.Model):
     fee_comments = models.CharField(blank=True, null=True, max_length=250)
     start_date = models.DateField(auto_now=False, auto_now_add=False, default="2018-08-01")
     end_date = models.DateField(auto_now=False, auto_now_add=False, default="2019-06-30")
-    start_time = models.TimeField(auto_now=False, auto_now_add=False, null=True, blank=True)
-    end_time = models.TimeField(auto_now=False, auto_now_add=False, null=True, blank=True)
+    start_time = models.TimeField(auto_now=False, auto_now_add=False, null=True, default="09:00")
+    end_time = models.TimeField(auto_now=False, auto_now_add=False, null=True, default="16:30")
     DAY_CHOICES = (
         ('Various', 'FT - Multiple Days'),
         ('Weds/Thurs/Fri', 'Weds/Thurs/Fri'),

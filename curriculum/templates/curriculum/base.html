@@ -94,9 +94,9 @@
   </div>
 </div>
 
-<script type="text/javascript" src="{% static 'curriculum/tablesorter.js' %}"></script>
 <script type="text/javascript" src="{% static 'curriculum/custom.js' %}"></script>
-  <script src="{% static 'curriculum/ajax.js' %}"></script>
+<script type="text/javascript" src="{% static 'curriculum/ajax.js' %}"></script>
+<script type="text/javascript" src="{% static 'curriculum/tablesorter.js' %}"></script>
 <script>
 $(document).ready(function()
     {
@@ -110,6 +110,23 @@ $("#myTable tr").click(function() {
     if(!selected)
             $(this).addClass("highlight");
 });
+
+function saveDraft(){
+  var inputs = document.getElementsByTagName('input');
+  var textareas = document.getElementsByTagName('textarea');
+  for (var i = 0; i < inputs.length; i += 1) {
+      if (inputs[i].value == '') {
+        inputs[i].value = 'tbc';
+      }
+    }
+  for (var i = 0; i < textareas.length; i += 1) {
+      if (textareas[i].value == '') {
+        textareas[i].value = 'tbc';
+      }
+    }
+  document.getElementById("addOffering").submit();
+  }
+
 </script>
 </body>
 </html>
