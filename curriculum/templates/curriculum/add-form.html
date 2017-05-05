@@ -10,7 +10,7 @@
 
           <form class="form-horizontal" id="addOffering" action="" method="post">
             {% csrf_token %}
-            <div class="form-group">
+            <div class="form-group hidden">
               <label class="col-sm-2">{{ form.course_caution.label_tag }}</label>
               <div class="col-sm-10">{{ form.course_caution }}<br>
                 <span style="color: #459540">Tick this if you're not sure whether the course will run in its current form - helpful for Marketing during prospectus proofing.</span>

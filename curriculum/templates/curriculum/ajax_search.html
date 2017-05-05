@@ -1,9 +1,13 @@
 {% if lars.count > 0 %}
 
 {% for lars in lars %}
-  <span><strong>Qual Title:</strong> {{ lars.qual_aim_title }}<br>
+  <span>
+    <strong>Qual Aim:</strong> {{ lars.qual_aim }}</br>
+    <strong>Qual Title:</strong> {{ lars.qual_aim_title }}<br>
     <strong>Awarding Body:</strong> EDEXCEL<br>
-    <strong>GLH Min/Max:</strong> 350/540</span>
+    <strong>GLH Min/Max:</strong> 350/540<br>
+    <strong><a href="" onclick="copyQual({{ lars.qual_aim }}); return false">Copy Qual Aim</a></strong>
+  </span><br><br>
 {% endfor %}
 
 {% else %}

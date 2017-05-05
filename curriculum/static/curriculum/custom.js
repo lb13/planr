@@ -1,4 +1,4 @@
-$('td:contains("True")').closest('tr').css('background-color','orange');
+$('td:contains("True")').closest('tr').css('background-color','#f7df72');
 
 function calcGlh(){
     hrs = document.getElementById("id_wk_hrs").value;

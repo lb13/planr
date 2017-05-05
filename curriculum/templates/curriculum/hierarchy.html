@@ -1,0 +1,20 @@
+{% extends 'curriculum/base.html' %}
+
+{% block body %}
+{% if object_list %}
+
+{% for mainoffering in main %}
+<div style="border: 1px solid blue; margin: 10px" id="{{ mainoffering.course_id }}">
+  <div style="display: inline; border: 1px solid red; width: 200px; height: auto">{{ mainoffering.course_name }}</div>
+  {% for offering in sub %}
+  <div id="{{ offering.course_id }}" style="display: inline-block">{{ offering.course_name }}</div>
+  {% endfor %}
+  </div>
+{% endfor %}
+
+{% else %}
+  <h3>There are no courses in your curriculum yet!</h3>
+{% endif %}
+</div>
+
+{% endblock %}

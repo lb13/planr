@@ -6,6 +6,10 @@ app_name = 'curriculum'
 urlpatterns = [
     # /curriculum/
     url(r'^$', views.IndexView.as_view(), name='index'),
+    # /curriculum/table/
+    url(r'^table/$', views.TableView.as_view(), name='table'),
+    # /curriculum/table/
+    url(r'^hierarchy/$', views.HierarchyView.as_view(), name='hierarchy'),
     # /curriculum/123/
     url(r'^(?P<pk>[0-9]+)/$', views.DetailView.as_view(), name='detail'),
     # /curriculum/offering/add

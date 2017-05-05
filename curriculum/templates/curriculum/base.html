@@ -17,93 +17,36 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container-fluid">
-
-      <!-- Header -->
-      <div class="navbar-header">
-
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#topNavBar">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="{% url 'curriculum:index'%}"><span class="glyphicon glyphicon-education" aria-hidden="true"></span>&nbsp;&nbsp;Planr</a>
-      </div>
-
-      <!-- Items -->
-      <div class="collapse navbar-collapse" id="topNavBar">
-
-        {% if user.is_authenticated %}
-        <!-- Search Function -->
-        <form class="navbar-form navbar-left" role="search" method="get" action="#">
-          <div class="form-group">
-            <input type="text" class="form-control" name="q" value="">
-            <button type="submit" class="btn btn-default">Search</button>
-          </div>
-        </form>
-        {% else %}
-        {% endif %}
-
-        <!-- Right-hand Block -->
-        <ul class="nav navbar-nav navbar-right">
-        {% if user.is_authenticated %}
-        <!-- Add Offering Function -->
-          <li class="">
-            <a href="{% url 'curriculum:offering-add' %}">
-              <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp; Add New Offering
-            </a>
-          </li>
-          {% else %}
-          {% endif %}
-
-          {% if user.is_authenticated %}
-          {% else %}
-          <!-- Log In Function -->
-          <li class="">
-            <a href="/login/">
-              <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>&nbsp;
-              Log In
-            </a>
-          </li>
-          {% endif %}
-
-          {% if user.is_authenticated %}
-          <!-- Log Out Function -->
-          <li class="">
-            <a href="/logout/">
-              <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>&nbsp;
-              Log Out
-            </a>
-          </li>
-          {% else %}
-          {% endif %}
-
-        </ul>
-
-      </div>
-
+  <div class="container-fluid">
+    <div class="panel panel-default" style="display: inline-block">
+      <div class="panel-heading">
+      <h3>Hi {{ request.user.first_name }}! Here are the courses in your department</h3>
+      <div>
+      <div style="display: inline"><button class="btn btn-primary">Repeat an Old Course</button></div>
+      <div style="display: inline"><button class="btn btn-primary" onclick="location.href='{% url 'curriculum:offering-add' %}'">Create a New Course</button></div>
+      <div style="display: inline"><button class="btn btn-info" onclick="location.href='{% url 'curriculum:hierarchy' %}'">Hierarchy View</button></div>
+      <div style="display: inline"><button class="btn btn-info" onclick="location.href='{% url 'curriculum:table' %}'">Table View</button></div>
+      <div style="display: inline"><button class="btn btn-info" onclick="location.href='{% url 'curriculum:index' %}'">Summary View</button></div>
+      <div style="display: inline"><button class="btn btn-success" onclick="location.href='https://github.com/lb13/planr/blob/master/introduction.md'">User Guide</button></div>
+    </div><br>
     </div>
-  </nav>
+      <div class="panel-body">
 {% block body %}
 {% endblock %}
-<div class="navbar navbar-inverse navbar-fixed-bottom">
-  <div class="container-fluid" style="color: #FFF; padding-top: 14px">
-  <div class="col-md-2">&copy; Bath College | 2017</div>
-  <div class="col-md-2 col-md-offset-8"><a href="https://github.com/lb13/planr" style="color: #FFF"><img style="height: 24px; filter: invert(100%)" src="{% static 'curriculum/images/github.svg' %}">&nbsp;&nbsp;read the docs here</a></div>
+<div class="panel-footer">
+<div style="display: inline">&copy; Bath College | 2017</div>
+<div style="display: inline" class="pull-right"><a href="https://github.com/lb13/planr">
+  <img style="height: 24px" src="{% static 'curriculum/images/github.svg' %}">
+  &nbsp;&nbsp;read the docs here</a></div>
   </div>
+</div>
+</div>
 </div>
 
 <script type="text/javascript" src="{% static 'curriculum/custom.js' %}"></script>
 <script type="text/javascript" src="{% static 'curriculum/ajax.js' %}"></script>
 <script type="text/javascript" src="{% static 'curriculum/tablesorter.js' %}"></script>
 <script>
-$(document).ready(function()
-    {
-        $("#myTable").tablesorter( {sortList: [[0,0], [1,0]]} );
-    }
-);
-
 $("#myTable tr").click(function() {
     var selected = $(this).hasClass("highlight");
     $("#myTable tr").removeClass("highlight");
@@ -124,9 +67,13 @@ function saveDraft(){
         textareas[i].value = 'tbc';
       }
     }
+  document.getElementById("id_course_caution").checked = true;
   document.getElementById("addOffering").submit();
   }
 
+function copyQual(x){
+  document.getElementById('id_qual_aim').value = x;
+}
 </script>
 </body>
 </html>

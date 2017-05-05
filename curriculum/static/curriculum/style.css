@@ -1,10 +1,8 @@
 body{
-  background-color: #DFDCF6;
+  background-color: #dfecee;
 
   font-family: 'Century Gothic', Verdana, Arial, sans-serif;
-  padding-top: 65px;
-  padding-bottom: 65px;
-  padding-right: 15px;
+  padding: 15px;
   width: auto;
 }
 
@@ -16,23 +14,12 @@ a {
     color: green;
 }
 
+a:hover {
+ cursor: pointer;
+}
+
 .navbar-brand{
   font-family: 'Satisfy', cursive;
-}
-
-td {
-  padding-left: 5px;
-  padding-right: 5px;
-  border-right: 1px solid black;
-}
-
-th {
-  padding-left: 5px;
-  padding-right: 5px;
-  padding-top: 1px;
-  padding-bottom: 1px;
-  border-right: 1px solid white;
-  background: linear-gradient(grey, black, grey);
 }
 
 .highlight { background-color: #c2e4e7; }

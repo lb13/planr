@@ -7,14 +7,298 @@
     <div class="col-sm-12">
       <div class="panel panel-default">
         <div class="panel-body">
-            <div class="form-group">
-              <label class="col-sm-2">{{ offering.course_name }}</label>
-              <div class="col-sm-10">{{ offering.course_code }}<br>
+
+          <form class="form-horizontal" id="addOffering" action="" method="post">
+            {% csrf_token %}
+            <div class="form-group hidden">
+              <label class="col-sm-2">{{ form.course_caution.label_tag }}</label>
+              <div class="col-sm-10">{{ form.course_caution }}<br>
+                <span style="color: #459540">Tick this if you're not sure whether the course will run in its current form - helpful for Marketing during prospectus proofing.</span>
               </div>
             </div>
-          </div>
-        </div>
-      </div>
-    </div>
+
+            <div class="form-group">
+              <label class="col-sm-2">{{ form.course_name.label_tag }}</label>
+              <div class="col-sm-10">{{ form.course_name }}<br>
+                <span style="color: #459540">{{ form.course_name.help_text }}</span>
+              </div>
+            </div>
+
+<div class="form-group">
+  <label class="col-sm-2">{{ form.course_delivery.label_tag }}</label>
+  <div class="col-sm-10">{{ form.course_delivery }}<br>
+    <span style="color: #459540">{{ form.course_delivery.help_text }}</span>
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-sm-2">{{ form.course_type.label_tag }}</label>
+  <div class="col-sm-10" onchange="showAss();">{{ form.course_type }}<br>
+    <span style="color: #459540">{{ form.course_type.help_text }}</span>
+  </div>
+</div>
+
+<div class="form-group" id="ass_aim" style="display: none">
+  <label class="col-sm-2">Associated Main Aim</label>
+  <div class="col-sm-10">{{ form.parent_code }}<br>
+    <span style="color: #459540">Only choose an item if this is a child or nested qualification of a main aim.</span>
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-sm-2">{{ form.strand.label_tag }}</label>
+  <div class="col-sm-10">{{ form.strand }}<br>
+    <span style="color: #459540">{{ form.strand.help_text }}</span>
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-sm-2">{{ form.department.label_tag }}</label>
+  <div class="col-sm-10">{{ form.department }}<br>
+    <span style="color: #459540">{{ form.department.help_text }}</span>
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-sm-2">{{ form.location.label_tag }}</label>
+  <div class="col-sm-10">{{ form.location }}<br>
+    <span style="color: #459540">{{ form.location.help_text }}</span>
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-sm-2">{{ form.qual_aim.label_tag }}</label>
+  <div class="col-sm-3">{{ form.qual_aim }}</div>
+    <div class="col-sm-3 alert alert-info" style="display: inline;" id="search-results"></div>
+</div>
+
+<div class="form-group">
+  <label class="col-sm-2">{{ form.fee_comments.label_tag }}</label>
+  <div class="col-sm-10">{{ form.fee_comments }}<br>
+    <span style="color: #459540">Record any useful cost information so that finance can calculate fees accurately.</span>
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-sm-2">{{ form.start_date.label_tag }}</label>
+  <div class="col-sm-10">{{ form.start_date }}<br>
+    <span style="color: #459540">{{ form.start_date.help_text }}</span>
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-sm-2">{{ form.end_date.label_tag }}</label>
+  <div class="col-sm-10">{{ form.end_date }}<br>
+    <span style="color: #459540">{{ form.end_date.help_text }}</span>
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-sm-2">Weekly hours:</label>
+  <div class="col-sm-10" onkeyup="calcGlh();">{{ form.wk_hrs }}<br>
+    <span style="color: #459540">{{ form.wk_hrs.help_text }}</span>
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-sm-2">Number of weeks:</label>
+  <div class="col-sm-10" onkeyup="calcGlh();">{{ form.number_wks }}<br>
+    <span style="color: #459540">{{ form.number_wks.help_text }}</span>
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-sm-2">GLH:</label>
+  <div class="col-sm-10">{{ form.glh }}
+    <div>Calculated value: <div id="rec_glh" style="display: inline"></div></div>
+    <span style="color: #459540">{{ form.glh.help_text }}</span>
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-sm-2">Start Time:</label>
+  <div class="col-sm-10">{{ form.start_time }}<br>
+    <span style="color: #459540">{{ form.start_time.help_text }}</span>
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-sm-2">End Time:</label>
+  <div class="col-sm-10">{{ form.end_time }}<br>
+    <span style="color: #459540">{{ form.end_time.help_text }}</span>
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-sm-2">Day:</label>
+  <div class="col-sm-10">{{ form.day }}<br>
+    <span style="color: #459540">{{ form.day.help_text }}</span>
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-sm-2">Study Year:</label>
+  <div class="col-sm-10">
+{{ form.study_year }}<br>
+  <span style="color: #459540">Which year of study does this represent? For most full and part time courses, this will be 1.</span>
+</div>
+</div>
+
+<div class="form-group">
+  <label class="col-sm-2">Study Year Duration:</label>
+  <div class="col-sm-10">
+{{ form.study_year_duration }}<br>
+  <span style="color: #459540">How many years does this course take to complete? Most qualifications and short courses should take 1 year or less. Extended Diplomas and part time qualifications often take 2 or more years.</span>
+</div>
+</div>
+
+<div class="form-group">
+  <label class="col-sm-2">Number of Groups:</label>
+  <div class="col-sm-10">
+{{ form.number_grps }}<br>
+  <span style="color: #459540">How many groups will you need to split your students up effectively for timetabling purposes?</span>
+</div>
+</div>
+
+<div class="form-group">
+  <label class="col-sm-2">Minimum Number of Students:</label>
+  <div class="col-sm-10">
+{{ form.min_students }}<br>
+  <span style="color: #459540">What is the minimum amount of students required for this course to run?</span>
+</div>
+</div>
+
+<div class="form-group">
+  <label class="col-sm-2">Maximum Number of Students:</label>
+  <div class="col-sm-10">
+{{ form.max_students }}<br>
+  <span style="color: #459540">What is the maximum number of students that could realistically be taught? The number will also be used for income projection, so avoid arbitrarily high numbers like 999.</span>
+</div>
+</div>
+
+<div class="form-group">
+  <label class="col-sm-2">Marketing - Course Name:</label>
+  <div class="col-sm-10">
+{{ form.mkt_course_name }}<br>
+  <span style="color: #459540">A clean, easily understood title that can be used in the prospectus. An example might be 'Plumbing Diploma'.</span>
+</div>
+</div>
+
+<div class="form-group">
+  <label class="col-sm-2">Marketing - Course Overview:</label>
+  <div class="col-sm-10">
+{{ form.mkt_course_overview }}<br>
+  <span style="color: #459540">A summary of the course.</span>
+</div>
+</div>
+
+<div class="form-group">
+  <label class="col-sm-2">Marketing - Prospectus:</label>
+  <div class="col-sm-10">
+{{ form.mkt_prospectus }}<br>
+  <span style="color: #459540">Select which (if any) of the prospectuses you would like to advertise this course in.</span>
+</div>
+</div>
+
+<div class="form-group">
+  <label class="col-sm-2">Marketing - Entry Requirements:</label>
+  <div class="col-sm-10">
+{{ form.mkt_entry_req }}<br>
+  <span style="color: #459540">What are the academic and personal entry requirements? What experience is necessary?</span>
+</div>
+</div>
+
+<div class="form-group">
+  <label class="col-sm-2">Marketing - Topics Covered:</label>
+  <div class="col-sm-10">
+{{ form.mkt_topics }}<br>
+  <span style="color: #459540">What topics are covered in this course? Bullet-points are acceptable.</span>
+</div>
+</div>
+
+<div class="form-group">
+  <label class="col-sm-2">Marketing - Target Audience:</label>
+  <div class="col-sm-10">
+{{ form.mkt_target }}<br>
+  <span style="color: #459540">Who is this course aimed at? Describe your ideal student!</span>
+</div>
+</div>
+
+<div class="form-group">
+  <label class="col-sm-2">Marketing - Learning Methods:</label>
+  <div class="col-sm-10">
+{{ form.mkt_learning }}<br>
+  <span style="color: #459540">How will students learn? Is the course classroom-based or will they be in workshops / outside?</span>
+</div>
+</div>
+
+<div class="form-group">
+  <label class="col-sm-2">Marketing - Assessment Methods:</label>
+  <div class="col-sm-10">
+{{ form.mkt_assess }}<br>
+  <span style="color: #459540">How will students be assessed? Will there be an exam? How many assignments?</span>
+</div>
+</div>
+
+<div class="form-group">
+  <label class="col-sm-2">Marketing - Career Progression:</label>
+  <div class="col-sm-10">
+{{ form.mkt_career }}<br>
+  <span style="color: #459540">Where will the course lead? Is there another qualification at the college or elsewhere? Can they go straight into employment? If the course is for personal development, what are some practical applications?</span>
+</div>
+</div>
+
+<div class="form-group">
+  <label class="col-sm-2">Marketing - Additional Costs:</label>
+  <div class="col-sm-10">
+{{ form.mkt_add_costs }}<br>
+  <span style="color: #459540">Is there anything else that students will need to pay for outside of the course fees? Will they need kit or uniform? If so, roughly how much will this cost?</span>
+</div>
+</div>
+
+<div class="form-group">
+  <label class="col-sm-2">Marketing - First Day:</label>
+  <div class="col-sm-10">
+{{ form.mkt_where }}<br>
+  <span style="color: #459540">Where should students go on their first day? This is usually the main reception of the appropriate campus, but make sure it's clear!</span>
+</div>
+</div>
+
+<div class="form-group">
+  <label class="col-sm-2">Marketing - What to Bring:</label>
+  <div class="col-sm-10">
+{{ form.mkt_bring }}<br>
+  <span style="color: #459540">What should students bring on their first day? Most full time students won't need to be reminded to bring a pen and paper, but L2L students might find that detail helpful!</span>
+</div>
+</div>
+
+<div class="form-group">
+  <label class="col-sm-2">Marketing - Other Information:</label>
+  <div class="col-sm-10">
+{{ form.mkt_other }}<br>
+  <span style="color: #459540">Is there anything students should know that isn't covered in the other sections?</span>
+</div>
+
+</div>
+<div class="form-group">
+  <label class="col-sm-2">Marketing - Course Tutor:</label>
+  <div class="col-sm-10">
+{{ form.mkt_tutor }}<br>
+  <span style="color: #459540">Not essential for full time courses, but part time and L2L students like to know who their tutor will be - and what their credentials are. If they have a website, add a link!</span>
+</div>
+</div>
+
+<div class="form-group">
+  <div class="col-sm-offset-2 col-sm-10">
+    <button type="button" onclick="saveDraft()" class="btn btn-warning">Save to Drafts</button>
+    <button type="submit" class="btn btn-success">Save &amp; Commit</button>
+</form>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 </div>
 {% endblock %}

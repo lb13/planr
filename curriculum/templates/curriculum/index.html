@@ -1,109 +1,39 @@
 {% extends 'curriculum/base.html' %}
 
 {% block body %}
-
-<div class="container-fluid">
-  <div class="panel panel-default" style="width: 3035px">
-    <div class="panel-heading">
-    <h3>Hi (NAME)! Here are the courses in your department (DEPT)</h3>
-  </div>
-    <div class="panel-body">
 {% if object_list %}
-  <input type="search" class="light-table-filter" data-table="order-table" placeholder="Filter">
-  <table class="order-table tablesorter" id="myTable" style="border: 1px solid black; border-collapse: collapse; table-layout: fixed; width: 3000px">
-    <thead>
-    <tr style="border: 1px solid black; background-color: black; color: white">
-      <th style="width: 75px">Under Review?</th>
-      <th style="width: 300px">Course Name&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-sort-by-attributes"></span></th>
-      <th style="width: 180px">Course Code</th>
-      <th style="width: 100px">Marketing</th>
-      <th style="width: 100px">Edit</th>
-      <th style="width: 100px">Delete</th>
-      <th style="width: 75px">Course Delivery</th>
-      <th style="width: 75px">Course Type</th>
-      <th style="width: 180px">Associated Code</th>
-      <th style="width: 60px">Strand</th>
-      <th style="width: 75px">Location</th>
-      <th style="width: 80px">Qual Aim</th>
-      <th>Fee Comments</th>
-      <th style="width: 120px">Start Date</th>
-      <th style="width: 120px">End Date</th>
-      <th style="width: 100px">Start Time</th>
-      <th style="width: 100px">End Time</th>
-      <th>Day</th>
-      <th style="width: 50px">Study Year</th>
-      <th style="width: 75px">Study Duration</th>
-      <th style="width: 65px">Weekly Hours</th>
-      <th style="width: 65px">No. of Weeks</th>
-      <th style="width: 65px">GLH</th>
-      <th style="width: 65px">Groups</th>
-      <th style="width: 70px">Min Students</th>
-      <th style="width: 70px; border-right: 1px solid black!important">Max Students</th>
+<input type="search" style="width: 100%" class="light-table-filter" data-table="order-table" placeholder="Quick filter">
 
+<div class="col-md-5">
+<table class="table order-table tablesorter">
+    <thead><tr><th>Draft Offerings</th></tr></thead>
+    <tbody>
+{% for offering in drafts %}
+  <tr>
+    <td>{{ offering.course_name }} | {{ offering.qual_aim }} ({{ offering.qual_aim_title }})</td>
+    <td><a href="#"><span style="color: green" class="glyphicon glyphicon-pencil"></span></a></td>
+    <td><a href="#"><span style="color: red" class="glyphicon glyphicon-trash"></span></a></td>
+  </tr>
+{% endfor %}
+</tbody>
+</table>
+  </div>
+<div class="col-md-5 col-md-offset-2">
+  <table class="table order-table tablesorter">
+      <thead><tr><th>Committed Offerings</th></tr></thead>
+      <tbody>
+  {% for offering in commits %}
+    <tr>
+      <td>{{ offering.course_name }} | {{ offering.qual_aim }} ({{ offering.qual_aim_title }})</td>
+      <td><a href="#"><span style="color: green" class="glyphicon glyphicon-pencil"></span></a></td>
     </tr>
-  </thead>
-  <tbody>
-    {% for offering in object_list %}
-    <tr style="border: 1px solid black">
-      <td style="text-align: center">{{ offering.course_caution }}</td>
-      <td>{{ offering.course_name }}</td>
-      <td>{{ offering.course_code }}</td>
-      <td>
-        <form action="{% url 'curriculum:marketing-update' offering.course_id %}" method="get" style="display: inline">
-          {% csrf_token %}
-          <input type="hidden" name="offering_id" value="{{ offering.course_id }}"/>
-          <button type="submit" class="btn btn-success btn-xs" style="width: 90px">
-            <span class="glyphicon glyphicon-th-list"></span>
-          </button>
-        </form>
-      </td>
-      <td style="border-right: 1px solid black">
-        <form action="{% url 'curriculum:offering-update' offering.course_id %}" method="get" style="display: inline">
-          {% csrf_token %}
-          <input type="hidden" name="offering_id" value="{{ offering.course_id }}"/>
-          <button type="submit" class="btn btn-primary btn-xs" style="width: 90px">
-            <span class="glyphicon glyphicon-pencil"></span>
-          </button>
-        </form>
-      </td>
-      <td>
-        <form action="{% url 'curriculum:offering-delete' offering.course_id %}" method="get" style="display: inline">
-          {% csrf_token %}
-          <input type="hidden" name="offering_id" value="{{ offering.course_id }}"/>
-          <button type="submit" class="btn btn-danger btn-xs" style="width: 90px">
-            <span class="glyphicon glyphicon-trash"></span>
-          </button>
-        </form>
-      </td>
-      <td>{{ offering.course_delivery }}</td>
-      <td>{{ offering.course_type }}</td>
-      <td>{{ offering.parent_code }}</td>
-      <td>{{ offering.strand }}</td>
-      <td>{{ offering.location }}</td>
-      <td>{{ offering.qual_aim }}</td>
-      <td>{{ offering.fee_comments }}</td>
-      <td>{{ offering.start_date }}</td>
-      <td>{{ offering.end_date }}</td>
-      <td>{{ offering.start_time }}</td>
-      <td>{{ offering.end_time }}</td>
-      <td>{{ offering.day }}</td>
-      <td>{{ offering.study_year }}</td>
-      <td>{{ offering.study_year_duration }}</td>
-      <td>{{ offering.wk_hrs }}</td>
-      <td>{{ offering.number_wks }}</td>
-      <td>{{ offering.glh }}</td>
-      <td>{{ offering.number_grps }}</td>
-      <td>{{ offering.min_students }}</td>
-      <td>{{ offering.max_students }}</td>
-
-    </tr>
-    {% endfor %}
-  </tbody>
-  </table>
+  {% endfor %}
+</tbody>
+</table>
+</div>
 {% else %}
   <h3>There are no courses in your curriculum yet!</h3>
 {% endif %}
 </div>
-</div>
-</div>
+
 {% endblock %}
