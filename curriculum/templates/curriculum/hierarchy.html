@@ -7,7 +7,9 @@
 <div style="border: 1px solid blue; margin: 10px" id="{{ mainoffering.course_id }}">
   <div style="display: inline; border: 1px solid red; width: 200px; height: auto">{{ mainoffering.course_name }}</div>
   {% for offering in sub %}
-  <div id="{{ offering.course_id }}" style="display: inline-block">{{ offering.course_name }}</div>
+    {% if offering.parent_code == mainoffering %}
+      <div id="{{ offering.course_id }}" style="display: block">{{ offering.course_name }}</div>
+    {% endif %}
   {% endfor %}
   </div>
 {% endfor %}
