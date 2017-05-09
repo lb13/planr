@@ -152,7 +152,7 @@ class Offering(models.Model):
     start_time = models.TimeField(auto_now=False, auto_now_add=False, null=True, default="09:00")
     end_time = models.TimeField(auto_now=False, auto_now_add=False, null=True, default="16:30")
     DAY_CHOICES = (
-        ('Various', 'FT - Multiple Days'),
+        ('Various', 'Multiple Days'),
         ('Weds/Thurs/Fri', 'Weds/Thurs/Fri'),
         ('Weds/Fri', 'Weds/Fri'),
         ('Wednesday', 'Wednesday'),
@@ -178,7 +178,7 @@ class Offering(models.Model):
         ('Mon/Fri', 'Mon/Fri'),
         ('Friday', 'Friday'),
         )
-    day = models.CharField(max_length=100, choices=DAY_CHOICES, default='Various', help_text="Only required for part time courses, if full time, leave set to 'FT - Multiple Days'")
+    day = models.CharField(max_length=100, choices=DAY_CHOICES, default='Various', help_text="Day or days that course regularly runs. If combination is not in list, use 'Multiple Days' or contact CIS to have it added to the list.")
     study_year = models.IntegerField(default=1, help_text="For courses with a duration of one year or less, this will always be '1'")
     study_year_duration = models.IntegerField(default=1, help_text="How many years will this course take overall?")
     wk_hrs = models.IntegerField(default=0, help_text="How many hours of study per week?")

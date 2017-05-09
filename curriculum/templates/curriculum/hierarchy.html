@@ -2,15 +2,27 @@
 
 {% block body %}
 {% if object_list %}
-
+<div class="container">
+  <div class="col-sm-4">
+    <h2>Main Aims</h2>
+  </div>
+  <div class="col-sm-4">
+    <h2>Child / Nested Aims</h2>
+  </div>
+</div>
+<br>
 {% for mainoffering in main %}
-<div style="border: 1px solid blue; margin: 10px" id="{{ mainoffering.course_id }}">
-  <div style="display: inline; border: 1px solid red; width: 200px; height: auto">{{ mainoffering.course_name }}</div>
+<div class="container" style="margin-bottom: 25px" id="{{ mainoffering.course_id }}">
+  <div class="col-sm-4" style="background-color: #66a266; padding: 5px; border-radius: 5px">{{ mainoffering.course_name }} - {{ mainoffering.course_code }}</div>
+  <div class="col-sm-4">
   {% for offering in sub %}
     {% if offering.parent_code == mainoffering %}
-      <div id="{{ offering.course_id }}" style="display: block">{{ offering.course_name }}</div>
+      <div style="background-color: #95c195; padding: 5px; border-radius: 5px" id="{{ offering.course_id }}">{{ offering.course_name }} - {{ offering.course_code }}</div>
     {% endif %}
   {% endfor %}
+<a onclick="toggle('{{ mainoffering.course_id }}list')"><span class="glyphicon glyphicon-plus"></span> Add Child/Nested</a>
+<div id="{{ mainoffering.course_id }}list" style="display: none">aklsdjaslkdj</div>
+</div>
   </div>
 {% endfor %}
 

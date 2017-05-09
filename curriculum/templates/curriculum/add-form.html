@@ -18,25 +18,33 @@
             </div>
 
             <div class="form-group">
+              <label class="col-sm-2">{{ form.course_delivery.label_tag }}</label>
+              <div class="col-sm-10" onchange="showTimes(); showDay(); showDetails()">{{ form.course_delivery }}<br>
+                <span style="color: #459540">{{ form.course_delivery.help_text }}</span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-sm-2">{{ form.course_type.label_tag }}</label>
+              <div class="col-sm-10" onchange="showAss();">{{ form.course_type }}<br>
+                <span style="color: #459540">{{ form.course_type.help_text }}</span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-sm-2">{{ form.qual_aim.label_tag }}</label>
+              <div class="col-sm-3">{{ form.qual_aim }}</div>
+                <div class="col-sm-3 alert alert-info" style="display: inline;" id="search-results">--type a qual aim to begin--</div>
+            </div>
+
+            <div class="form-group">
               <label class="col-sm-2">{{ form.course_name.label_tag }}</label>
               <div class="col-sm-10">{{ form.course_name }}<br>
                 <span style="color: #459540">{{ form.course_name.help_text }}</span>
               </div>
             </div>
 
-<div class="form-group">
-  <label class="col-sm-2">{{ form.course_delivery.label_tag }}</label>
-  <div class="col-sm-10">{{ form.course_delivery }}<br>
-    <span style="color: #459540">{{ form.course_delivery.help_text }}</span>
-  </div>
-</div>
 
-<div class="form-group">
-  <label class="col-sm-2">{{ form.course_type.label_tag }}</label>
-  <div class="col-sm-10" onchange="showAss();">{{ form.course_type }}<br>
-    <span style="color: #459540">{{ form.course_type.help_text }}</span>
-  </div>
-</div>
 
 <div class="form-group" id="ass_aim" style="display: none">
   <label class="col-sm-2">Associated Main Aim</label>
@@ -64,12 +72,6 @@
   <div class="col-sm-10">{{ form.location }}<br>
     <span style="color: #459540">{{ form.location.help_text }}</span>
   </div>
-</div>
-
-<div class="form-group">
-  <label class="col-sm-2">{{ form.qual_aim.label_tag }}</label>
-  <div class="col-sm-3">{{ form.qual_aim }}</div>
-    <div class="col-sm-3 alert alert-info" style="display: inline;" id="search-results"></div>
 </div>
 
 <div class="form-group">
@@ -115,6 +117,7 @@
   </div>
 </div>
 
+<div id="times" style="display: none">
 <div class="form-group">
   <label class="col-sm-2">Start Time:</label>
   <div class="col-sm-10">{{ form.start_time }}<br>
@@ -128,14 +131,16 @@
     <span style="color: #459540">{{ form.end_time.help_text }}</span>
   </div>
 </div>
+</div>
 
-<div class="form-group">
+<div class="form-group" id="day" style="display: none">
   <label class="col-sm-2">Day:</label>
   <div class="col-sm-10">{{ form.day }}<br>
     <span style="color: #459540">{{ form.day.help_text }}</span>
   </div>
 </div>
 
+<div id="qualDetails">
 <div class="form-group">
   <label class="col-sm-2">Study Year:</label>
   <div class="col-sm-10">
@@ -157,6 +162,7 @@
   <div class="col-sm-10">
 {{ form.number_grps }}<br>
   <span style="color: #459540">How many groups will you need to split your students up effectively for timetabling purposes?</span>
+</div>
 </div>
 </div>
 

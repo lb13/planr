@@ -1,9 +1,12 @@
 {% if lars.count > 0 %}
 
+<a onclick="clearSearch()"><span style="color: red" class="pull-right">close search x</span></a>
+<br>
 {% for lars in lars %}
   <span>
     <strong>Qual Aim:</strong> {{ lars.qual_aim }}</br>
     <strong>Qual Title:</strong> {{ lars.qual_aim_title }}<br>
+    <strong>Qual Level:</strong> Level 3<br>
     <strong>Awarding Body:</strong> EDEXCEL<br>
     <strong>GLH Min/Max:</strong> 350/540<br>
     <strong><a href="" onclick="copyQual({{ lars.qual_aim }}); return false">Copy Qual Aim</a></strong>

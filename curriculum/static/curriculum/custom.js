@@ -6,6 +6,51 @@ function calcGlh(){
     document.getElementById("rec_glh").innerHTML = hrs * wks;
 }
 
+function show(id){
+  document.getElementById(id).style.display = 'block';
+}
+
+function toggle(id){
+  if ( document.getElementById(id).style.display == 'block' ) {
+    document.getElementById(id).style.display = 'none';
+  }
+  else {
+    document.getElementById(id).style.display = 'block';
+  }
+}
+
+function clearSearch(){
+  document.getElementById("search-results").innerHTML = "--type a qual aim to begin--";
+}
+
+function showTimes(){
+  if ( document.getElementById("id_course_delivery").value == 'FT' | document.getElementById("id_course_delivery").value == 'APP') {
+    document.getElementById("times").style.display = "none";
+  }
+  else {
+    document.getElementById("times").style.display = "block";
+  }
+}
+
+function showDetails(){
+  if ( document.getElementById("id_course_delivery").value == 'L2L' ) {
+    document.getElementById("qualDetails").style.display = "none";
+    document.getElementById("id_course_type").value = "S";
+  }
+  else {
+    document.getElementById("qualDetails").style.display = "block";
+  }
+}
+
+function showDay() {
+  if ( document.getElementById("id_course_delivery").value == 'FT' | document.getElementById("id_course_delivery").value == 'APP') {
+    document.getElementById("day").style.display = "none";
+  }
+  else {
+    document.getElementById("day").style.display = "block";
+  }
+}
+
 function showAss(){
   if ( document.getElementById("id_course_type").value == 'N' | document.getElementById("id_course_type").value == 'C') {
     document.getElementById("ass_aim").style.display = "block";
